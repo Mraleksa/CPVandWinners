@@ -29,6 +29,7 @@ client.request({url: 'https://public.api.openprocurement.org/api/2.3/contracts?o
 	var winner = data.getJSON().data.suppliers[0].name;
 	var winnerAdress = data.getJSON().data.suppliers[0].contactPoint.email;
 	var amount = data.getJSON().data.value.amount;	
+	
 	client.request({url: 'https://public.api.openprocurement.org/api/2.3/tenders/'+data.getJSON().data.tender_id})
 		.then(function (data) {
 		var startAmount;
@@ -39,7 +40,7 @@ client.request({url: 'https://public.api.openprocurement.org/api/2.3/contracts?o
 		else {
 			for (var i = 1; i <= data.getJSON().data.lots.length; i++) {
 				if(lotIdContracts==data.getJSON().data.lots[data.getJSON().data.lots.length-(i)].id){
-				startAmount =  data.getJSON().data.lots[data.getJSON().data.lots.length-(i)].value.amount
+				startAmount =  data.getJSON().data.lots[data.getJSON().data.lots.length-(i)].value.amount;
 				};	
 			};			
 		};
@@ -60,10 +61,10 @@ client.request({url: 'https://public.api.openprocurement.org/api/2.3/contracts?o
 	//console.log(change);
 	statement.finalize();
 	});
-	});
+	})
 	.catch(function  (error) {								
 	});  
-	}
+	
 //////////SQLite//////////////	
 	})
 	.catch(function  (error) {
