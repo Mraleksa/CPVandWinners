@@ -3,7 +3,7 @@ var d3 = require("d3");
 var sqlite3 = require("sqlite3").verbose();
 var db = new sqlite3.Database("data.sqlite");
 
-var start =  "2017-01-01T00:00:0.000000+03:00"
+var start =  "2017-01-01T13:52:03.653970+02:00"
 var p=0; var p2=0;
 
 
@@ -75,7 +75,7 @@ if(change=="itemPriceVariation"){
 		//console.log("error_detale3")				
 	})
 	.then(function () {	
-		if (p<10){piv ();}		
+		if (p<2){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
@@ -83,7 +83,7 @@ if(change=="itemPriceVariation"){
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 < 30) {
+				if (p2 < 1) {
 					piv ();
 				}
 				else {console.log("STOP")}
