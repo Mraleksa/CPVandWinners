@@ -47,7 +47,7 @@ if(change=="itemPriceVariation"){
 	//console.log(startAmount)
 	}
 	db.serialize(function() {	
-	db.run("CREATE TABLE IF NOT EXISTS data (key TEXT,cpv TEXT,name TEXT,contactPoint TEXT,contractID TEXT,startAmount INT,amount INT)");
+	db.run("CREATE TABLE IF NOT EXISTS data (key TEXT,cpv TEXT,contractID TEXT,name TEXT,contactPoint TEXT,startAmount INT,amount INT)");
 		
 	//db.run("CREATE TABLE IF NOT EXISTS data (dateModified TEXT,dateSigned TEXT,tenderID TEXT,procuringEntity TEXT,numberOfBids INT,startAmount INT,amount INT,cpv TEXT)");
 	var statement = db.prepare("INSERT INTO data VALUES (?,?,?,?,?,?,?)");
