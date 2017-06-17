@@ -21,8 +21,7 @@ client.request({url: 'https://public.api.openprocurement.org/api/2.3/contracts?o
 		client.request({url: 'https://public.api.openprocurement.org/api/2.3/contracts/'+item.id})
 		.then(function (data) {	
 //////////SQLite//////////////
-var change = data.getJSON().data.changes[data.getJSON().data.changes.length-1].rationaleTypes[0];
-if(change=="itemPriceVariation"){	
+	
 	var lotIdContracts = data.getJSON().data.items[0].relatedLot;
 	var dateSigned = data.getJSON().data.dateSigned;
 	var description = data.getJSON().data.items[0].description;
@@ -45,7 +44,7 @@ if(change=="itemPriceVariation"){
 	   }
 	   
 	//console.log(startAmount)
-	}
+	
 	db.serialize(function() {	
 	db.run("CREATE TABLE IF NOT EXISTS data (key TEXT,cpv TEXT,contractID TEXT,name TEXT,contactPoint TEXT,startAmount INT,amount INT)");
 		
@@ -75,7 +74,7 @@ if(change=="itemPriceVariation"){
 		//console.log("error_detale3")				
 	})
 	.then(function () {	
-		if (p<2){piv ();}		
+		if (p<3){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
