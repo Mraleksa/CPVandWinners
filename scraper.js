@@ -5,7 +5,8 @@ var db = new sqlite3.Database("data.sqlite");
 
 var start =  "2017-01-01T00:00:0.000000+03:00"
 var p=0; var p2=0;
- 
+
+
 function piv(){  
 p++;
 client.request({url: 'https://public.api.openprocurement.org/api/2.3/contracts?offset='+start})
@@ -74,7 +75,7 @@ if(change=="itemPriceVariation"){
 		//console.log("error_detale3")				
 	})
 	.then(function () {	
-		if (p<1){piv ();}		
+		if (p<10){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
@@ -82,7 +83,7 @@ if(change=="itemPriceVariation"){
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 < 1) {
+				if (p2 < 30) {
 					piv ();
 				}
 				else {console.log("STOP")}
