@@ -37,11 +37,12 @@ client.request({url: 'https://public.api.openprocurement.org/api/2.3/contracts?o
 		//console.log(startAmount)
 		}
 		else {
-		for (var i = 1; i <= data.getJSON().data.lots.length; i++) {
-		if(lotIdContracts==data.getJSON().data.lots[data.getJSON().data.lots.length-(i)].id){
-		startAmount =  data.getJSON().data.lots[data.getJSON().data.lots.length-(i)].value.amount
-		};			
-	   });
+			for (var i = 1; i <= data.getJSON().data.lots.length; i++) {
+				if(lotIdContracts==data.getJSON().data.lots[data.getJSON().data.lots.length-(i)].id){
+				startAmount =  data.getJSON().data.lots[data.getJSON().data.lots.length-(i)].value.amount
+				};	
+			};			
+		};
 	   
 	//console.log(startAmount)
 	
