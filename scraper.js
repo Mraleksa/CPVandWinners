@@ -3,16 +3,8 @@ var d3 = require("d3");
 var sqlite3 = require("sqlite3").verbose();
 var db = new sqlite3.Database("data.sqlite");
 
-db.run("DELETE FROM data");
-var p = 0; 
-var formatTime = d3.timeFormat("%Y-%m-%d");
-var myDate = new Date();
-var dayOfMonth = myDate.getDate();
-myDate.setDate(dayOfMonth - 5);
-var start  = formatTime(myDate);
-console.log(start);
-var end  = formatTime(new Date());
-console.log(end);
+var start =  "2017-01-01T00:00:0.000000+03:00"
+var p=0; var p2=0;
  
 function piv(){  
 p++;
@@ -71,14 +63,20 @@ if(change=="itemPriceVariation"){
 		//console.log("error_detale3")				
 	})
 	.then(function () {	
-		if (start.replace(/T.*/, "") != end) {
-		//piv ();
-		setTimeout(function() {piv ();},10000);
-		}	
+		if (p<1){piv ();}		
 		else {
-		console.log("STOP")
-		//console.log(start.replace(/T.*/, ""))
-		}							
+			console.log("stop")
+				p=0;
+				p2++;
+				console.log(p2)
+			setTimeout(function() {
+			
+				if (p2 < 1) {
+					piv ();
+				}
+				else {console.log("STOP")}
+				}, 5000);
+		}								
 		})
 	.catch( function (error) {
 		console.log("error")
