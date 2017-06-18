@@ -76,7 +76,7 @@ client.request({url: 'https://public.api.openprocurement.org/api/2.3/contracts?o
 		//console.log("error_detale3")				
 	})
 	.then(function () {	
-		if (p<10){setTimeout(function() {piv ();},2000);}		
+		if (p<10){setTimeout(function() {piv ();},5000);}		
 		else {
 			console.log("stop")
 				p=0;
@@ -84,7 +84,7 @@ client.request({url: 'https://public.api.openprocurement.org/api/2.3/contracts?o
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 < 500) {
+				if (p2 < 300) {
 					piv ();
 				}
 				else {console.log("STOP")}
