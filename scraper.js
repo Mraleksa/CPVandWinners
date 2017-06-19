@@ -3,7 +3,7 @@ var d3 = require("d3");
 var sqlite3 = require("sqlite3").verbose();
 var db = new sqlite3.Database("data.sqlite");
 
-var start =  "2017-01-25T12:52:11.421552+02:00"
+var start =  "2017-01-00T00:00:00.421552+02:00"
 var p=0; var p2=0;
 
 
