@@ -3,7 +3,7 @@ var d3 = require("d3");
 var sqlite3 = require("sqlite3").verbose();
 var db = new sqlite3.Database("data.sqlite");
 
-var start =  "2017-01-25T12:22:13.721079+02:00"
+var start =  "2017-01-25T12:52:11.421552+02:00"
 var p=0; var p2=0;
 
 
@@ -76,7 +76,7 @@ client.request({url: 'https://public.api.openprocurement.org/api/2.3/contracts?o
 		//console.log("error_detale3")				
 	})
 	.then(function () {	
-		if (p<1){setTimeout(function() {piv ();},5000);}		
+		if (p<10){setTimeout(function() {piv ();},5000);}		
 		else {
 			console.log("stop")
 				p=0;
@@ -84,7 +84,7 @@ client.request({url: 'https://public.api.openprocurement.org/api/2.3/contracts?o
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 < 1) {
+				if (p2 < 100) {
 					piv ();
 				}
 				else {console.log("STOP")}
