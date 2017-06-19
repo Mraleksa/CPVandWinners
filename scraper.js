@@ -48,12 +48,12 @@ client.request({url: 'https://public.api.openprocurement.org/api/2.3/contracts?o
 	//console.log(startAmount)
 	
 	db.serialize(function() {	
-	db.run("CREATE TABLE IF NOT EXISTS data (key TEXT,cpv TEXT,contractID TEXT,name TEXT,contactPoint TEXT,startAmount INT,amount INT)");
+	db.run("CREATE TABLE IF NOT EXISTS data (dateModified TEXT,key TEXT,cpv TEXT,contractID TEXT,name TEXT,contactPoint TEXT,startAmount INT,amount INT)");
 		
 	//db.run("CREATE TABLE IF NOT EXISTS data (dateModified TEXT,dateSigned TEXT,tenderID TEXT,procuringEntity TEXT,numberOfBids INT,startAmount INT,amount INT,cpv TEXT)");
-	var statement = db.prepare("INSERT INTO data VALUES (?,?,?,?,?,?,?)");
+	var statement = db.prepare("INSERT INTO data VALUES (?,?,?,?,?,?,?,?)");
 	//var statement = db.prepare("INSERT INTO data VALUES (?,?,?,?,?,?,?,?)"); 	
-	statement.run(description,cpv,data.getJSON().data.tenderID,winner,winnerAdress,startAmount,amount);
+	statement.run(item.dateModified,description,cpv,data.getJSON().data.tenderID,winner,winnerAdress,startAmount,amount);
 	
 	//statement.run(item.dateModified,dateSigned,
 	//data.getJSON().data.tenderID,data.getJSON().data.procuringEntity.name,data.getJSON().data.numberOfBids,
@@ -76,7 +76,7 @@ client.request({url: 'https://public.api.openprocurement.org/api/2.3/contracts?o
 		//console.log("error_detale3")				
 	})
 	.then(function () {	
-		if (p<10){setTimeout(function() {piv ();},5000);}		
+		if (p<1){setTimeout(function() {piv ();},5000);}		
 		else {
 			console.log("stop")
 				p=0;
@@ -84,7 +84,7 @@ client.request({url: 'https://public.api.openprocurement.org/api/2.3/contracts?o
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 < 300) {
+				if (p2 < 1) {
 					piv ();
 				}
 				else {console.log("STOP")}
