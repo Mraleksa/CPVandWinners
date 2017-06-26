@@ -43,7 +43,7 @@ statement.finalize();
 		
 		})
 		.then(function () {	
-		if (p<1){piv ();}		
+		if (p<10){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
