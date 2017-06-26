@@ -25,7 +25,7 @@ client.request({url: 'https://public.api.openprocurement.org/api/2.3/tenders?off
 status = data.getJSON().data.status;
 description = data.getJSON().data.items[0].description.toLowerCase();
 cpv = data.getJSON().data.items[0].classification.id;				
-name = data.getJSON().data.items[0].classification.id;
+name = data.getJSON().data.procuringEntity.name;
 					
 db.serialize(function() {
 db.run("CREATE TABLE IF NOT EXISTS data (dateModified TEXT,description TEXT,status TEXT,cpv TEXT,name TEXT)");
