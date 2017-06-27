@@ -34,7 +34,15 @@ if(status=="complete")	{
 		winner = data.getJSON().data.contracts[i-1].suppliers.name;
 		region = data.getJSON().data.contracts[i-1].suppliers.address.region;			
 	};			
-}						
+}
+else {
+		description = "";
+		cpv = "";
+		mail = "";
+		edr = "";
+		winner = "";
+		region = "";
+};
 						
 db.serialize(function() {
 db.run("CREATE TABLE IF NOT EXISTS data (dateModified TEXT,tenderID TEXT,status TEXT,name TEXT,description TEXT,cpv TEXT,mail TEXT,edr TEXT,winner TEXT,region TEXT)");
