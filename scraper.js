@@ -28,7 +28,8 @@ name = data.getJSON().data.procuringEntity.name;
 
 if(data.getJSON().data.status=="complete")	{
 	console.log(status)
-	/*for (var i = 1; i <= data.getJSON().data.contracts.length; i++) {
+	var q;
+	for (q = 1; q <= data.getJSON().data.contracts.length; q++) {
 		description = data.getJSON().data.contracts[0].items.description.toLowerCase();
 		cpv = data.getJSON().data.contracts[0].items.classification.id;
 		mail = data.getJSON().data.contracts[0].suppliers.contactPoint.email;
@@ -37,7 +38,7 @@ if(data.getJSON().data.status=="complete")	{
 		region = data.getJSON().data.contracts[0].suppliers.address.region;
 		
 	};
-	*/			
+				
 }
 else {
 		description = data.getJSON().data.items[0].classification.description;
