@@ -39,7 +39,7 @@ if(status=="complete")	{
 db.serialize(function() {
 db.run("CREATE TABLE IF NOT EXISTS data (dateModified TEXT,tenderID TEXT,status TEXT,name TEXT,description TEXT,cpv TEXT,mail TEXT,edr TEXT,winner TEXT,region TEXT)");
 var statement = db.prepare("INSERT INTO data VALUES (?,?,?,?,?,?,?,?,?,?)");
-statement.run(item.dateModified,description,status,cpv,name);
+statement.run(item.dateModified,tenderID,status,name,description,cpv,mail,edr,winner,region);
 statement.finalize();
 });
 			
@@ -52,7 +52,7 @@ statement.finalize();
 		
 		})
 		.then(function () {	
-		if (p<3){piv ();}		
+		if (p<1){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
