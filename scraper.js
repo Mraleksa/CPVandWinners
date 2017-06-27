@@ -27,7 +27,7 @@ tenderID = data.getJSON().data.tenderID;
 name = data.getJSON().data.procuringEntity.name;
 
 if(data.getJSON().data.status=="complete")	{
-	console.log(status)
+	console.log(data.getJSON().data.contracts.length)
 	var q;
 	for (q = 1; q <= data.getJSON().data.contracts.length; q++) {
 		description = data.getJSON().data.contracts[0].items.description.toLowerCase();
