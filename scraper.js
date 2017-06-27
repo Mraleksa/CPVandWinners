@@ -26,13 +26,15 @@ status = data.getJSON().data.status;
 tenderID = data.getJSON().data.tenderID;
 name = data.getJSON().data.procuringEntity.name;
 if(status=="complete")	{
+	console.log(status)
 	for (var i = 1; i <= data.getJSON().data.contracts.length; i++) {
 		description = data.getJSON().data.contracts[i-1].items.description.toLowerCase();
 		cpv = data.getJSON().data.contracts[i-1].items.classification.id;
 		mail = data.getJSON().data.contracts[i-1].suppliers.contactPoint.email;
 		edr = data.getJSON().data.contracts[i-1].suppliers.identifier.id;
 		winner = data.getJSON().data.contracts[i-1].suppliers.name;
-		region = data.getJSON().data.contracts[i-1].suppliers.address.region;			
+		region = data.getJSON().data.contracts[i-1].suppliers.address.region;
+		console.log(winner)
 	};			
 }
 else {
