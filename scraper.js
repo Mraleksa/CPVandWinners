@@ -28,7 +28,7 @@ name = data.getJSON().data.procuringEntity.name;
 
 if(status=="complete")	{
 	
-	for (var i = 1; i <= data.getJSON().data.contracts.length; i++) {
+	//for (var i = 1; i <= data.getJSON().data.contracts.length; i++) {
 		description = data.getJSON().data.contracts[0].items.description.toLowerCase();
 		cpv = data.getJSON().data.contracts[0].items.classification.id;
 		mail = data.getJSON().data.contracts[0].suppliers.contactPoint.email;
@@ -36,7 +36,7 @@ if(status=="complete")	{
 		winner = data.getJSON().data.contracts[0].suppliers.name;
 		region = data.getJSON().data.contracts[0].suppliers.address.region;
 		
-	};			
+	//};			
 }
 else {
 		description = data.getJSON().data.items[0].classification.description;
