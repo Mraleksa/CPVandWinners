@@ -29,9 +29,9 @@ name = data.getJSON().data.procuringEntity.name;
 if(data.getJSON().data.status=="complete")	{
 	
 	var q;
-	for (q = 1; q <= data.getJSON().data.contracts.length; q++) {
+	for (q = 0; q <= data.getJSON().data.contracts.length; q++) {
 		
-		description = data.getJSON().data.contracts[0].items.description.toLowerCase();
+		description = data.getJSON().data.contracts[data.getJSON().data.contracts.length-q].items.description.toLowerCase();
 		//cpv = data.getJSON().data.contracts[0].items.classification.id;
 		//mail = data.getJSON().data.contracts[0].suppliers.contactPoint.email;
 		//edr = data.getJSON().data.contracts[0].suppliers.identifier.id;
