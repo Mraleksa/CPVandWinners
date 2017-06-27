@@ -5,7 +5,7 @@ var sqlite3 = require("sqlite3").verbose();
 // Open a database handle
 var db = new sqlite3.Database("data.sqlite");
 
-var currentCount =  "2017-02-01T00:00:00.623987+03:00"
+var currentCount =  "2017-02-11T00:00:00.623987+03:00"
 var p=0; var p2=0;var description,status,cpv,name,winner,region,mail,edr,tenderID;
  
 function piv(){  
@@ -36,8 +36,8 @@ if(status=="complete")	{
 	};			
 }
 else {
-		description = "";
-		cpv = "";
+		description = data.getJSON().data.items[0].classification.description;
+		cpv = data.getJSON().data.items[0].classification.id;
 		mail = "";
 		edr = "";
 		winner = "";
