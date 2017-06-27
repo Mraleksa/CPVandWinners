@@ -5,7 +5,7 @@ var sqlite3 = require("sqlite3").verbose();
 // Open a database handle
 var db = new sqlite3.Database("data.sqlite");
 
-var currentCount =  "2017-02-14T00:00:00.623987+03:00"
+var currentCount =  "2017-02-16T12:48:14.610033+02:00"
 var p=0; var p2=0;var description,status,cpv,name,winner,region,mail,edr,tenderID;
  
 function piv(){  
@@ -79,7 +79,7 @@ statement.finalize();
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 < 10) {
+				if (p2 <20) {
 					piv ();
 				}
 				else {console.log("STOP")}
