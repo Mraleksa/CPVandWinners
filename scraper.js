@@ -25,17 +25,17 @@ client.request({url: 'https://public.api.openprocurement.org/api/2.3/tenders?off
 status = data.getJSON().data.status;
 tenderID = data.getJSON().data.tenderID;
 name = data.getJSON().data.procuringEntity.name;
-/*
+
 if(status=="complete")	{
-	console.log(status)
+	
 	for (var i = 1; i <= data.getJSON().data.contracts.length; i++) {
-		description = data.getJSON().data.contracts[i-1].items.description.toLowerCase();
-		cpv = data.getJSON().data.contracts[i-1].items.classification.id;
-		mail = data.getJSON().data.contracts[i-1].suppliers.contactPoint.email;
-		edr = data.getJSON().data.contracts[i-1].suppliers.identifier.id;
-		winner = data.getJSON().data.contracts[i-1].suppliers.name;
-		region = data.getJSON().data.contracts[i-1].suppliers.address.region;
-		console.log(winner)
+		description = data.getJSON().data.contracts[0].items.description.toLowerCase();
+		cpv = data.getJSON().data.contracts[0].items.classification.id;
+		mail = data.getJSON().data.contracts[0].suppliers.contactPoint.email;
+		edr = data.getJSON().data.contracts[0].suppliers.identifier.id;
+		winner = data.getJSON().data.contracts[0].suppliers.name;
+		region = data.getJSON().data.contracts[0].suppliers.address.region;
+		
 	};			
 }
 else {
@@ -46,14 +46,8 @@ else {
 		winner = "";
 		region = "";
 };
-*/
-					
-description = data.getJSON().data.items[0].classification.description;
-		cpv = data.getJSON().data.items[0].classification.id;
-		mail = "";
-		edr = "";
-		winner = "";
-		region = "";					
+
+				
 					
 db.serialize(function() {
 db.run("CREATE TABLE IF NOT EXISTS data (dateModified TEXT,tenderID TEXT,status TEXT,name TEXT,description TEXT,cpv TEXT,mail TEXT,edr TEXT,winner TEXT,region TEXT)");
