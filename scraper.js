@@ -31,14 +31,14 @@ if(data.getJSON().data.status=="complete")	{
 	var q;
 	for (q = 0; q < data.getJSON().data.contracts.length; q++) {
 		
-		//description = data.getJSON().data.contracts[data.getJSON().data.contracts.length-q].items.description.toLowerCase();
+		description = data.getJSON().data.contracts[q].items[0].description.toLowerCase();
 		cpv = data.getJSON().data.contracts[q].items[0].classification.id;
-		//mail = data.getJSON().data.contracts[0].suppliers.contactPoint.email;
-		//edr = data.getJSON().data.contracts[0].suppliers.identifier.id;
-		//winner = data.getJSON().data.contracts[0].suppliers.name;
-		//region = data.getJSON().data.contracts[0].suppliers.address.region;
+		mail = data.getJSON().data.contracts[q].suppliers[0].contactPoint.email;
+		edr = data.getJSON().data.contracts[q].suppliers[0].identifier.id;
+		winner = data.getJSON().data.contracts[q].suppliers[0].name;
+		region = data.getJSON().data.contracts[q].suppliers[0].address.region;
 		
-		console.log(cpv)
+		//console.log(cpv)
 		
 		
 	};
