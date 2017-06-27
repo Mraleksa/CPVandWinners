@@ -45,7 +45,7 @@ if(data.getJSON().data.status=="complete")	{
 				
 }
 else {
-		description = data.getJSON().data.items[0].classification.description;
+		description = data.getJSON().data.items[0].description.toLowerCase();
 		cpv = data.getJSON().data.items[0].classification.id;
 		mail = "";
 		edr = "";
