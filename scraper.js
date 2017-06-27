@@ -71,7 +71,7 @@ statement.finalize();
 		
 		})
 		.then(function () {	
-		if (p<1){piv ();}		
+		if (p<10){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
@@ -79,7 +79,7 @@ statement.finalize();
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 < 1) {
+				if (p2 < 10) {
 					piv ();
 				}
 				else {console.log("STOP")}
