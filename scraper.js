@@ -5,7 +5,7 @@ var sqlite3 = require("sqlite3").verbose();
 // Open a database handle
 var db = new sqlite3.Database("data.sqlite");
 
-var currentCount =  "2017-02-11T00:00:00.623987+03:00"
+var currentCount =  "2017-02-14T00:00:00.623987+03:00"
 var p=0; var p2=0;var description,status,cpv,name,winner,region,mail,edr,tenderID;
  
 function piv(){  
@@ -25,6 +25,7 @@ client.request({url: 'https://public.api.openprocurement.org/api/2.3/tenders?off
 status = data.getJSON().data.status;
 tenderID = data.getJSON().data.tenderID;
 name = data.getJSON().data.procuringEntity.name;
+/*
 if(status=="complete")	{
 	console.log(status)
 	for (var i = 1; i <= data.getJSON().data.contracts.length; i++) {
@@ -45,7 +46,15 @@ else {
 		winner = "";
 		region = "";
 };
-						
+*/
+					
+description = data.getJSON().data.items[0].classification.description;
+		cpv = data.getJSON().data.items[0].classification.id;
+		mail = "";
+		edr = "";
+		winner = "";
+		region = "";					
+					
 db.serialize(function() {
 db.run("CREATE TABLE IF NOT EXISTS data (dateModified TEXT,tenderID TEXT,status TEXT,name TEXT,description TEXT,cpv TEXT,mail TEXT,edr TEXT,winner TEXT,region TEXT)");
 var statement = db.prepare("INSERT INTO data VALUES (?,?,?,?,?,?,?,?,?,?)");
