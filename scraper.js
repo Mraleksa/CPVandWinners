@@ -25,7 +25,9 @@ client.request({url: 'https://public.api.openprocurement.org/api/2.3/tenders?off
 status = data.getJSON().data.status;
 tenderID = data.getJSON().data.tenderID;
 name = data.getJSON().data.procuringEntity.name;
-
+dateModified = item.dateModified;
+					
+	
 if(data.getJSON().data.status=="complete")	{
 	
 	var q;
@@ -58,7 +60,7 @@ else {
 db.serialize(function() {
 db.run("CREATE TABLE IF NOT EXISTS data (dateModified TEXT,tenderID TEXT,status TEXT,name TEXT,description TEXT,cpv TEXT,mail TEXT,edr TEXT,winner TEXT,region TEXT)");
 var statement = db.prepare("INSERT INTO data VALUES (?,?,?,?,?,?,?,?,?,?)");
-statement.run(item.dateModified,tenderID,status,name,description,cpv,mail,edr,winner,region);
+statement.run(dateModified.replace(/T.*/, ""),tenderID,status,name,description,cpv,mail,edr,winner,region);
 statement.finalize();
 });
 			
