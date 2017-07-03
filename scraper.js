@@ -5,7 +5,7 @@ var sqlite3 = require("sqlite3").verbose();
 // Open a database handle
 var db = new sqlite3.Database("data.sqlite");
 
-var currentCount =  "2017-04-21T13:08:36.878953+03:00"
+var currentCount =  "2017-02-21T13:08:36.878953+03:00"
 var p=0; var p2=0;var description,status,cpv,name,winner,region,mail,edr,tenderID,amount;
  
 function piv(){  
