@@ -38,7 +38,7 @@ if(data.getJSON().data.status=="complete")	{
 		mail = data.getJSON().data.contracts[q].suppliers[0].contactPoint.email;
 		edr = data.getJSON().data.contracts[q].suppliers[0].identifier.id;
 		winner = data.getJSON().data.contracts[q].suppliers[0].name;
-		region = data.getJSON().data.contracts[q].suppliers[0].address;
+		region = data.getJSON().data.contracts[q].suppliers[0].address.region;
 		amount = data.getJSON().data.contracts[q].value.amount;
 		
 		//console.log(cpv)
@@ -56,7 +56,7 @@ else {
 		region = "";
 		amount = "";
 };
-
+region = region.replace(/\s.*/, "");
 					
 db.serialize(function() {
 db.run("CREATE TABLE IF NOT EXISTS data (dateModified TEXT,tenderID TEXT,status TEXT,name TEXT,description TEXT,cpv TEXT,mail TEXT,edr TEXT,winner TEXT,region TEXT)");
