@@ -53,7 +53,7 @@ else {
 		mail = "";
 		edr = "";
 		winner = "";
-		region = "no";
+		region = "n o";
 		amount = "";
 };
 
