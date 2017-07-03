@@ -6,7 +6,7 @@ var sqlite3 = require("sqlite3").verbose();
 var db = new sqlite3.Database("data.sqlite");
 
 var currentCount =  "2017-02-21T13:08:36.878953+03:00"
-var p=0; var p2=0;var description,status,cpv,name,winner,region,region2,mail,edr,tenderID,amount;
+var p=0; var p2=0;var description,status,cpv,name,winner,region,mail,edr,tenderID,amount;
  
 function piv(){  
 p++;
@@ -53,15 +53,15 @@ else {
 		mail = "";
 		edr = "";
 		winner = "";
-		region = "n o";
-		amount = "";
+		region = "";
+		amount = 0;
 };
-region2 = region.replace(/\s.*/, "");
+
 					
 db.serialize(function() {
-db.run("CREATE TABLE IF NOT EXISTS data (dateModified TEXT,tenderID TEXT,status TEXT,name TEXT,description TEXT,cpv TEXT,mail TEXT,edr TEXT,winner TEXT,region TEXT)");
-var statement = db.prepare("INSERT INTO data VALUES (?,?,?,?,?,?,?,?,?,?)");
-statement.run(dateModified.replace(/T.*/, ""),tenderID,status,name,description,cpv,mail,edr,winner,region2);
+db.run("CREATE TABLE IF NOT EXISTS data (dateModified TEXT,tenderID TEXT,status TEXT,name TEXT,description TEXT,cpv TEXT,mail TEXT,edr TEXT,winner TEXT,region TEXT,amount INT)");
+var statement = db.prepare("INSERT INTO data VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+statement.run(dateModified.replace(/T.*/, ""),tenderID,status,name,description,cpv,mail,edr,winner,region,amount);
 statement.finalize();
 });
 					//.replace(/\s.*/, "")
