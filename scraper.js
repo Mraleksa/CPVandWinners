@@ -53,7 +53,7 @@ else {
 		mail = "";
 		edr = "";
 		winner = "";
-		region = "";
+		region = "n o";
 		amount = "";
 };
 region2 = region.replace(/\s.*/, "");
