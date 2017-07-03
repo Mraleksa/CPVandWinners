@@ -6,7 +6,7 @@ var sqlite3 = require("sqlite3").verbose();
 var db = new sqlite3.Database("data.sqlite");
 
 var currentCount =  "2017-04-21T13:08:36.878953+03:00"
-var p=0; var p2=0;var description,status,cpv,name,winner,region,mail,edr,tenderID;
+var p=0; var p2=0;var description,status,cpv,name,winner,region,mail,edr,tenderID,amount;
  
 function piv(){  
 p++;
@@ -39,6 +39,7 @@ if(data.getJSON().data.status=="complete")	{
 		edr = data.getJSON().data.contracts[q].suppliers[0].identifier.id;
 		winner = data.getJSON().data.contracts[q].suppliers[0].name;
 		region = data.getJSON().data.contracts[q].suppliers[0].address.region;
+		amount = data.getJSON().data.contracts[q].value.amount;
 		
 		//console.log(cpv)
 		
@@ -53,14 +54,15 @@ else {
 		edr = "";
 		winner = "";
 		region = "";
+		amount = "";
 };
 
 				
 					
 db.serialize(function() {
-db.run("CREATE TABLE IF NOT EXISTS data (dateModified TEXT,tenderID TEXT,status TEXT,name TEXT,description TEXT,cpv TEXT,mail TEXT,edr TEXT,winner TEXT,region TEXT)");
-var statement = db.prepare("INSERT INTO data VALUES (?,?,?,?,?,?,?,?,?,?)");
-statement.run(dateModified.replace(/T.*/, ""),tenderID,status,name,description,cpv,mail,edr,winner,region);
+db.run("CREATE TABLE IF NOT EXISTS data (dateModified TEXT,tenderID TEXT,status TEXT,name TEXT,description TEXT,cpv TEXT,mail TEXT,edr TEXT,winner TEXT,region TEXT,amount INT)");
+var statement = db.prepare("INSERT INTO data VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+statement.run(dateModified.replace(/T.*/, ""),tenderID,status,name,description,cpv,mail,edr,winner,region.replace(/\s.+/, ""),amount);
 statement.finalize();
 });
 			
@@ -73,7 +75,7 @@ statement.finalize();
 		
 		})
 		.then(function () {	
-		if (p<10){piv ();}		
+		if (p<1){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
@@ -81,7 +83,7 @@ statement.finalize();
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 <150) {
+				if (p2 <1) {
 					piv ();
 				}
 				else {console.log("STOP")}
